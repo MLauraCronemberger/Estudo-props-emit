@@ -43,7 +43,7 @@
     <br>
       <v-btn color="primary" @click="mostrarModal">Cadastrar Série</v-btn>
 
-      <CadastroSerie v-model:mostrarModalCadastrar="mostrarModalCadastrar"/>
+      <CadastroSerie v-model:mostrarModalCadastrar="mostrarModalCadastrar"  @seriesCadastradas="atualizarLista"/>
 
 </template>
 
@@ -66,12 +66,17 @@ const headers = [
    const seriesCadastradas = ref([]);
 
     async function fetchSeriesCadastradas() {
-    try {
-    const { data } = await SerieService.seriesCadastradas();
-    seriesCadastradas.value = data
-    } catch (e) {
-    console.error('Erro ao buscar serviços.', e)
-    }
+        try {
+            const { data } = await SerieService.seriesCadastradas();
+            seriesCadastradas.value = data
+        } catch (e) {
+            console.error('Erro ao buscar serviços.', e)
+        }
+}
+
+function atualizarLista(novasSeries) {
+console.log("Recebi do filho:", novasSeries)
+  seriesCadastradas.value = novasSeries
 }
 
 onMounted(() => {

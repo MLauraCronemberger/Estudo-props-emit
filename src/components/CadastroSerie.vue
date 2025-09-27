@@ -47,6 +47,10 @@
 import { ref } from 'vue';
 import SerieService from '../service/SerieService';
 
+const emit = defineEmits(['seriesCadastradas'])
+
+const seriesCadastradas = ref([]);
+
 const objeto = ref({
   serie: '',
   nivelEnsino: '',
@@ -54,11 +58,27 @@ const objeto = ref({
   turno: '',
 })
 
+  async function atualizarSeriesCadastradas() {
+    console.log("bateu aqui");
+    try {
+        const { data } = await SerieService.seriesCadastradas();
+        seriesCadastradas.value = data
+        console.log("baixando dnv:", seriesCadastradas);
+    } catch (e) {
+        console.error('Erro ao buscar serviços.', e)
+    }
+}
+
   async function cadastrarSerie() {
     try {
       const response = await SerieService.cadastrarSerie(objeto.value);
       console.log("Série cadastrada:", response.data);
       mostrarModalCadastrar.value= false;
+
+      await atualizarSeriesCadastradas();
+
+      emit('seriesCadastradas', seriesCadastradas.value)
+
     } catch (e) {
     console.error('Erro ao buscar serviços.', e)
     }
