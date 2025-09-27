@@ -58,6 +58,15 @@ const objeto = ref({
   turno: '',
 })
 
+async function limpar(){
+  objeto.value = ref({
+  serie: '',
+  nivelEnsino: '',
+  turma: '',
+  turno: '',
+})
+}
+
 //   async function atualizarSeriesCadastradas() {
 //     console.log("bateu aqui");
 //     try {
@@ -78,6 +87,8 @@ const objeto = ref({
       // await atualizarSeriesCadastradas();
 
       emit('seriesCadastradas', response.data)
+
+      limpar();
 
     } catch (e) {
     console.error('Erro ao buscar serviços.', e)
