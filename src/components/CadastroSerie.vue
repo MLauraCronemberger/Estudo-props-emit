@@ -49,7 +49,7 @@ import SerieService from '../service/SerieService';
 
 const emit = defineEmits(['seriesCadastradas'])
 
-const seriesCadastradas = ref([]);
+// const seriesCadastradas = ref([]);
 
 const objeto = ref({
   serie: '',
@@ -58,16 +58,16 @@ const objeto = ref({
   turno: '',
 })
 
-  async function atualizarSeriesCadastradas() {
-    console.log("bateu aqui");
-    try {
-        const { data } = await SerieService.seriesCadastradas();
-        seriesCadastradas.value = data
-        console.log("baixando dnv:", seriesCadastradas);
-    } catch (e) {
-        console.error('Erro ao buscar serviços.', e)
-    }
-}
+//   async function atualizarSeriesCadastradas() {
+//     console.log("bateu aqui");
+//     try {
+//         const { data } = await SerieService.seriesCadastradas();
+//         seriesCadastradas.value = data
+//         console.log("baixando dnv:", seriesCadastradas);
+//     } catch (e) {
+//         console.error('Erro ao buscar serviços.', e)
+//     }
+// }
 
   async function cadastrarSerie() {
     try {
@@ -75,9 +75,9 @@ const objeto = ref({
       console.log("Série cadastrada:", response.data);
       mostrarModalCadastrar.value= false;
 
-      await atualizarSeriesCadastradas();
+      // await atualizarSeriesCadastradas();
 
-      emit('seriesCadastradas', seriesCadastradas.value)
+      emit('seriesCadastradas', response.data)
 
     } catch (e) {
     console.error('Erro ao buscar serviços.', e)

@@ -74,28 +74,28 @@ const headers = [
         }
 }
 
-function atualizarLista(novasSeries) {
-console.log("Recebi do filho:", novasSeries)
-  seriesCadastradas.value = novasSeries
-}
+    function atualizarLista(novaSerie) {
+        console.log("Recebi do filho:", novaSerie)
+        seriesCadastradas.value.push(novaSerie)
+    }
 
-onMounted(() => {
-    console.log('Componente montado')
-    fetchSeriesCadastradas()
-})
+    onMounted(() => {
+        console.log('Componente montado')
+        fetchSeriesCadastradas()
+    })
 
-function mostrarModal () {
-  mostrarModalCadastrar.value = true;
-}
+    function mostrarModal () {
+    mostrarModalCadastrar.value = true;
+    }
 
-function visualizarItem(id) {
-  console.log('Visualizar', id)
-}
-function editarItem(id) {
-  console.log('Editar', id)
-}
-function excluirItem(id) {
-  console.log('Excluir', id)
-}
+    function visualizarItem(id) {
+    console.log('Visualizar', id)
+    }
+    function editarItem(id) {
+    console.log('Editar', id)
+    }
+    function excluirItem(id) {
+    console.log('Excluir', id)
+    }
 
 </script>
