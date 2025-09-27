@@ -79,44 +79,9 @@ onMounted(() => {
     fetchSeriesCadastradas()
 })
 
-// dados fictícios para popular a tabela
-// const seriesCadastradas = ref([
-//   {
-//     id: 1,
-//     serie: '6º Ano',
-//     turma: 'A',
-//     nivelEnsino: 'Fundamental II'
-//   },
-//   {
-//     id: 2,
-//     serie: '7º Ano',
-//     turma: 'B',
-//     nivelEnsino: 'Fundamental II'
-//   },
-//   {
-//     id: 3,
-//     serie: '8º Ano',
-//     turma: 'C',
-//     nivelEnsino: 'Fundamental II'
-//   },
-//   {
-//     id: 4,
-//     serie: '1º Ano',
-//     turma: 'A',
-//     nivelEnsino: 'Ensino Médio'
-//   },
-//   {
-//     id: 5,
-//     serie: '2º Ano',
-//     turma: 'B',
-//     nivelEnsino: 'Ensino Médio'
-//   },
-// ])
-
 function mostrarModal () {
   mostrarModalCadastrar.value = true;
 }
-
 
 function visualizarItem(id) {
   console.log('Visualizar', id)

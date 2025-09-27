@@ -35,7 +35,7 @@
 
       <v-card-actions>
         <v-spacer />
-        <v-btn color="primary" @click="salvar">Cadastrar</v-btn>
+        <v-btn color="primary" @click="cadastrarSerie">Cadastrar</v-btn>
         <v-btn text @click="mostrarModalCadastrar =false">Fechar</v-btn>
       </v-card-actions>
     </v-card>
@@ -44,7 +44,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import SerieService from '../service/SerieService';
 
 const objeto = ref({
   serie: '',
@@ -52,6 +53,16 @@ const objeto = ref({
   turma: '',
   turno: '',
 })
+
+  async function cadastrarSerie() {
+    try {
+      const response = await SerieService.cadastrarSerie(objeto.value);
+      console.log("Série cadastrada:", response.data);
+      mostrarModalCadastrar.value= false;
+    } catch (e) {
+    console.error('Erro ao buscar serviços.', e)
+    }
+}
 
 // const mostrarModalCadastrar = ref(true) // << ref aqui!
 const mostrarModalCadastrar = defineModel("mostrarModalCadastrar");
