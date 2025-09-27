@@ -3,12 +3,14 @@
   <div>
     
     <!-- <HelloWorld msg="Vite + Vue" /> -->
-     <Cadastro/>
+     <!-- <Cadastro/> -->
+      <ListagemSerie/>
   </div>
 </template>
 
 
 <script setup>
-import Cadastro from './components/Cadastro.vue';
+import Cadastro from './components/CadastroSerie.vue';
+import ListagemSerie from './components/ListagemSerie.vue';
 </script>
 

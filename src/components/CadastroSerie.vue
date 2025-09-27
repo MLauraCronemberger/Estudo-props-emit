@@ -1,8 +1,8 @@
 <template>
   <v-dialog
-    v-model="mostrarModal"
     max-width="600"
     transition="dialog-bottom-transition"
+    v-model="mostrarModalCadastrar"
     eager
   >
     <v-card>
@@ -36,7 +36,7 @@
       <v-card-actions>
         <v-spacer />
         <v-btn color="primary" @click="salvar">Cadastrar</v-btn>
-        <v-btn text @click="mostrarModal = false">Fechar</v-btn>
+        <v-btn text @click="mostrarModalCadastrar =false">Fechar</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -53,10 +53,11 @@ const objeto = ref({
   turno: '',
 })
 
-const mostrarModal = ref(true) // << ref aqui!
+// const mostrarModalCadastrar = ref(true) // << ref aqui!
+const mostrarModalCadastrar = defineModel("mostrarModalCadastrar");
 
 function salvar() {
   console.log(objeto.value)
-  mostrarModal.value = false
+  mostrarModalCadastrar.value = false
 }
 </script>
